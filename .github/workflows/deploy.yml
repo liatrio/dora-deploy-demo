@@ -8,6 +8,7 @@ on:
       - envs/dev/terragrunt.hcl
       - envs/common-inputs.yaml
       - envs/dev/vars.yaml
+      - .github/**
 jobs:
   deploy:
     environment: dev
