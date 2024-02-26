@@ -1,16 +1,16 @@
 name: Terragrunt Lambda Deployment
 
 on:
-  push:
+  pull_request:
     branches:
       - main
     paths:
-      - envs/dev/terragrunt.hcl
+      - envs/**/terragrunt.hcl
       - envs/common-inputs.yaml
-      - envs/dev/vars.yaml
+      - envs/**/vars.yaml
+      - .github/**
 jobs:
-  deploy:
-    environment: dev
+  plan:
     permissions:
       contents: read
       id-token: write
@@ -24,7 +24,7 @@ jobs:
       - name: configure AWS creds
         uses: aws-actions/configure-aws-credentials@v3
         with:
-          role-to-assume: ${{ vars.AWS_IAM_ROLE }}
+          role-to-assume: ${{ vars.AWS_PR_IAM_ROLE }}
           role-session-name: github-actions
           aws-region: ${{ vars.AWS_REGION }}
 
@@ -38,9 +38,4 @@ jobs:
       - name: Terragrunt plan
         run: |
           terragrunt run-all plan
-        working-directory: envs/dev
-      
-      - name: Terragrunt Apply
-        run: |
-          terragrunt run-all apply -auto-approve
         working-directory: envs/dev
