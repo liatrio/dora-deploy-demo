@@ -1,0 +1,4 @@
+# Terragrunt & Terraform
+.terragrunt-cache/
+terragrunt-debug.tfvars.json
+

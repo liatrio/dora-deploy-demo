@@ -1,0 +1,6 @@
+### This file contains inputs and values shared across stack modules and environments
+
+## Terraform Module Inputs
+aws_region: "us-east-1"
+deployment_name: "dora-lambda-demo"
+domain: "dora"
