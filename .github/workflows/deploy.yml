@@ -42,5 +42,5 @@ jobs:
       
       - name: Terragrunt Apply
         run: |
-          terragrunt run-all apply -auto-approve
+          terragrunt run-all apply --terragrunt-non-interactive
         working-directory: envs/dev
