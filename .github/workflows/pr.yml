@@ -1,4 +1,4 @@
-name: Terragrunt Lambda Deployment
+name: Terragrunt Lambda Deployment Plan
 
 on:
   pull_request:
@@ -16,7 +16,7 @@ jobs:
       id-token: write
       pull-requests: write
       issues: write
-    name: deploy
+    name: plan
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
