@@ -1,13 +1,14 @@
 name: Terragrunt Lambda Deployment
 
 on:
-  pull-request:
+  pull_request:
     branches:
       - main
     paths:
       - envs/**/terragrunt.hcl
       - envs/common-inputs.yaml
       - envs/**/vars.yaml
+      - .github/**
   push:
     branches:
       - main
@@ -33,7 +34,6 @@ jobs:
           role-to-assume: ${{ vars.AWS_IAM_ROLE }}
           role-session-name: dora-lambda-demo-deploy
           aws-region: ${{ vars.AWS_REGION }}
-
 
       - uses: alexellis/arkade-get@master
         with:
