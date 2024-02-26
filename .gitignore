@@ -1,4 +1,5 @@
 # Terragrunt & Terraform
 .terragrunt-cache/
 terragrunt-debug.tfvars.json
+envs/dev/.terraform.lock.hcl
 

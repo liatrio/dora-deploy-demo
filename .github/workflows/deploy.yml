@@ -45,5 +45,5 @@ jobs:
         
       - name: Terragrunt plan
         run: |
-          terragrunt run-all plan --auto-approve
+          terragrunt run-all plan
         working-directory: envs/dev
