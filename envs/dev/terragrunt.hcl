@@ -1,5 +1,6 @@
 terraform {
-  source = "git@github.com:liatrio/dora-lambda-tf-module-demo?ref=main"
+  //source = "git@github.com:liatrio/dora-lambda-tf-module-demo?ref=main"
+  source = "github.com/liatrio/dora-lambda-tf-module-demo?ref=main"
 }
 
 locals {

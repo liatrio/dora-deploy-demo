@@ -1,0 +1,41 @@
+name: Terragrunt Lambda Deployment Plan
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - envs/**/terragrunt.hcl
+      - envs/common-inputs.yaml
+      - envs/**/vars.yaml
+      - .github/**
+jobs:
+  plan:
+    permissions:
+      contents: read
+      id-token: write
+      pull-requests: write
+      issues: write
+    name: plan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: configure AWS creds
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          role-to-assume: ${{ vars.AWS_PR_IAM_ROLE }}
+          role-session-name: github-actions
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - uses: alexellis/arkade-get@master
+        with:
+          vault: latest
+          jq: latest
+          terraform: latest
+          terragrunt: latest
+        
+      - name: Terragrunt plan
+        run: |
+          terragrunt run-all plan
+        working-directory: envs/dev
