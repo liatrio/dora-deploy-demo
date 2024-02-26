@@ -16,8 +16,9 @@ on:
       - envs/**/terragrunt.hcl
       - envs/common-inputs.yaml
       - envs/**/vars.yaml
-jobs:         
+jobs:
   plan:
+    environment: dev
     permissions:
       contents: read
       id-token: write
@@ -32,7 +33,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v3
         with:
           role-to-assume: ${{ vars.AWS_IAM_ROLE }}
-          role-session-name: dora-lambda-demo-deploy
+          role-session-name: github-actions
           aws-region: ${{ vars.AWS_REGION }}
 
       - uses: alexellis/arkade-get@master
