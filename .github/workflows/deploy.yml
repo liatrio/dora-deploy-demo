@@ -19,8 +19,24 @@ jobs:
       issues: write
     name: deploy
     runs-on: ubuntu-latest
+    env:
+      THRESHOLD: ${{ secrets.THRESHOLD }}
+
     steps:
       - uses: actions/checkout@v4
+
+      - name: Randomly fail
+        run: |
+          RANDOM_NUMBER=$(( RANDOM % 10 + 1 ))
+          echo "Random number is $RANDOM_NUMBER"
+          # default to 20% if we didn't configure it
+          THRESHOLD=${THRESHOLD:-2}
+          if [ "$RANDOM_NUMBER" -le "$THRESHOLD" ]; then
+            echo "This run will fail"
+            exit 1
+          else
+            echo "This run will succeed"
+          fi
 
       - name: configure AWS creds
         uses: aws-actions/configure-aws-credentials@v3
