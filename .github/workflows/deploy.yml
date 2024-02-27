@@ -20,7 +20,7 @@ jobs:
     name: deploy
     runs-on: ubuntu-latest
     env:
-      THRESHOLD: ${{ secrets.THRESHOLD }}
+      THRESHOLD: ${{ vars.THRESHOLD }}
 
     steps:
       - uses: actions/checkout@v4
