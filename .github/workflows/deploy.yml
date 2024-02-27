@@ -39,7 +39,7 @@ jobs:
           fi
 
       - name: configure AWS creds
-        uses: aws-actions/configure-aws-credentials@v3
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ vars.AWS_IAM_ROLE }}
           role-session-name: github-actions
