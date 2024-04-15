@@ -50,7 +50,8 @@ jobs:
           vault: latest
           jq: latest
           terraform: latest
-          terragrunt: latest
+          terragrunt:
+          #terragrunt: latest
         
       - name: Terragrunt plan
         run: |
