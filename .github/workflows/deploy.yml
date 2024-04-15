@@ -51,6 +51,7 @@ jobs:
           jq: latest
           terraform: latest
           terragrunt:
+            required: true
           #terragrunt: latest
         
       - name: Terragrunt plan
