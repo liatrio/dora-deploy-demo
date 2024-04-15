@@ -50,9 +50,7 @@ jobs:
           vault: latest
           jq: latest
           terraform: latest
-          terragrunt:
-            required: true
-          #terragrunt: latest
+          terragrunt: v0.56.5
         
       - name: Terragrunt plan
         run: |
