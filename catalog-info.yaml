@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: "dora-deploy-demo"
+  description: "This repository hosts Terraform example code with Actions to populate DORA metrics."
+  annotations:
+    github.com/project-slug: liatrio/dora-deploy-demo
+spec:
+  type: website
+  lifecycle: experimental
+  owner: "group:default/tag-o11y"
