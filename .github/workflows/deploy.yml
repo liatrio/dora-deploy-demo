@@ -23,7 +23,7 @@ jobs:
       THRESHOLD: ${{ vars.THRESHOLD }}
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Randomly fail
         run: |
